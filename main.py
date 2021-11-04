@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 st.title('Analysis  by Asaoka')
-st.write('ver2021.11.4 ')
+st.write('ver. 2021.11.4 ')
 
 
 uploaded_file=st.file_uploader('↓ここにCSVデータをアップロード！')
