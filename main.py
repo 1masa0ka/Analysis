@@ -10,6 +10,10 @@ import matplotlib.pyplot as plt
 code_df='''
 df=pd.DataFrame({'x1':[0,1,2,3],'x2':[5,8,8,9],'x3':[2,4,6,8]})
 '''
+code_df_up='''
+df=pd.read_csv('テンプレート.csv')
+print(df)
+'''
 code_plt_plot='''
 fig,ax=plt.subplots()
 ax.plot(df['x1'],df['x2'])
@@ -47,18 +51,22 @@ expander.write('② インデックス無し，1行目がカラムになりま�
 expander.write('③ 右下のダウンロードボタンでテンプレをダウンロードできます．')
 
 df=pd.DataFrame({'x1':[0,1,2,3],'x2':[5,8,8,9],'x3':[2,4,6,8]})
-st.sidebar.write('データフレーム（サンプル）')
-st.sidebar.code(code_df,language='python')
+
 
 left_column,right_column=st.columns(2)
 
-csv=open('data2.csv')
+csv=open('テンプレート.csv')
 left_column.write('サンプルデータ')
 right_column.download_button('Download:サンプルデータ',csv,file_name='テンプレート.csv',mime='csv')
 
 if uploaded_file is not None:
     df=pd.read_csv(uploaded_file)
     st.write('現在のデータ')
+    st.sidebar.write('データフレーム（uploaded）')
+    st.sidebar.code(code_df_up,language='python')
+else:
+    st.sidebar.write('データフレーム（サンプル）')
+    st.sidebar.code(code_df,language='python')
 
 st.dataframe(df)
     
@@ -69,17 +77,17 @@ option=st.selectbox('グラフの種類',graph_list)
 
 if option == graph_list[0]:
     st.line_chart(df)
-    st.sidebar.write('折れ線グラフ(サンプル)')
+    st.sidebar.write('折れ線グラフ')
     st.sidebar.code(code_plt_plot,language='python')
 elif option==graph_list[1]:
     st.bar_chart(df)
-    st.sidebar.write('棒グラフ(サンプル)')
+    st.sidebar.write('棒グラフ')
     st.sidebar.code(code_plt_bar,language='python')
 elif option==graph_list[2]:
     fig,ax=plt.subplots()
     ax.hist(df,bins=3)
     st.pyplot(fig)
-    st.sidebar.write('ヒストグラム(サンプル)')
+    st.sidebar.write('ヒストグラム')
     st.sidebar.code(code_plt_hist,language='python')    
 
 
