@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 '''
 code_df='''
 df=pd.DataFrame({'x1':[0,1,2,3],'x2':[5,8,8,9],'x3':[2,4,6,8]})
+print(df)
 '''
 code_df_up='''
 df=pd.read_csv('テンプレート.csv')
