@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.title('Analysis')
+st.title('Analysis  by Asaoka')
 st.write('ver2021.11.4 ')
 
 
