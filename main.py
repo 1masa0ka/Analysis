@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.title('Analysis  by Asaoka')
-st.write('ver. 2021.11.4 ')
+st.title('Analysis')
+st.write('ver2021.11.4 ')
 
 
 uploaded_file=st.file_uploader('↓ここにCSVデータをアップロード！')
@@ -11,14 +11,19 @@ uploaded_file=st.file_uploader('↓ここにCSVデータをアップロード！
 expander=st.expander('CSVの書式')
 expander.write('① CSV形式のみ対応')
 expander.write('② インデックス無し，1行目がカラムになります．')
-expander.write('③ 基本的にはサンプル準拠でお願いしますm(__)m')
+expander.write('③ 右下のダウンロードボタンでテンプレをダウンロードできます．')
 
-df=pd.DataFrame({'x1':[0,1,2,3,4,5],'x2':[2,4,5,7,8,9],'x3':[8,6,4,3,2,1]})
+df=pd.DataFrame({'x1':[0,1,2,3],'x2':[5,8,8,9],'x3':[2,4,6,8]})
+
+left_column,right_column=st.columns(2)
+
+csv=open('data2.csv')
+left_column.write('サンプルデータ')
+right_column.download_button('Download:サンプルデータ',csv,file_name='テンプレート.csv',mime='csv')
+
 if uploaded_file is not None:
     df=pd.read_csv(uploaded_file)
     st.write('現在のデータ')
-else:
-    st.write('サンプルデータ')
 
 st.dataframe(df)
     
