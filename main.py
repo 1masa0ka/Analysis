@@ -2,6 +2,39 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
+code_library='''
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+'''
+code_df='''
+df=pd.DataFrame({'x1':[0,1,2,3],'x2':[5,8,8,9],'x3':[2,4,6,8]})
+'''
+code_plt_plot='''
+fig,ax=plt.subplots()
+ax.plot(df['x1'],df['x2'])
+ax.bar(df['x1'],df['x3'])
+fig.show()
+'''
+code_plt_bar='''
+fig,ax=plt.subplots()
+ax.bar(df['x1'],df['x2'])
+ax.bar(df['x1'],df['x3'])
+fig.show()
+'''
+code_plt_hist='''
+fig,ax=plt.subplots()
+ax.hist([df['x1'],df['x2'],df['x3']],bins=3)
+fig.show()
+'''
+
+st.sidebar.title('Python コード')
+expander_side=st.sidebar.expander('使い方')
+expander_side.write('お手持ちのPythonエディタを開いて頂き，以下のコードを上から順にコピペで，同様の挙動を再現できると思います．')
+
+st.sidebar.write('ライブラリ')
+st.sidebar.code(code_library,language='python')
+
 st.title('Analysis by Asaoka')
 st.write('ver. 2021.11.4 ')
 
@@ -14,6 +47,8 @@ expander.write('② インデックス無し，1行目がカラムになりま�
 expander.write('③ 右下のダウンロードボタンでテンプレをダウンロードできます．')
 
 df=pd.DataFrame({'x1':[0,1,2,3],'x2':[5,8,8,9],'x3':[2,4,6,8]})
+st.sidebar.write('データフレーム（サンプル）')
+st.sidebar.code(code_df,language='python')
 
 left_column,right_column=st.columns(2)
 
@@ -34,12 +69,18 @@ option=st.selectbox('グラフの種類',graph_list)
 
 if option == graph_list[0]:
     st.line_chart(df)
+    st.sidebar.write('折れ線グラフ(サンプル)')
+    st.sidebar.code(code_plt_plot,language='python')
 elif option==graph_list[1]:
     st.bar_chart(df)
+    st.sidebar.write('棒グラフ(サンプル)')
+    st.sidebar.code(code_plt_bar,language='python')
 elif option==graph_list[2]:
     fig,ax=plt.subplots()
-    ax.hist(df)
+    ax.hist(df,bins=3)
     st.pyplot(fig)
+    st.sidebar.write('ヒストグラム(サンプル)')
+    st.sidebar.code(code_plt_hist,language='python')    
 
 
 #st.write('option',option)
