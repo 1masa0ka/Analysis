@@ -87,7 +87,7 @@ elif option==graph_list[1]:
     st.sidebar.code(code_plt_bar,language='python')
 elif option==graph_list[2]:
     fig,ax=plt.subplots()
-    ax.hist(df,bins=3)
+    ax.hist(df,bins=3,label=df.columns)
     ax.legend()
     st.pyplot(fig)
     st.sidebar.write('ヒストグラム')
