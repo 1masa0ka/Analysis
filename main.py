@@ -17,19 +17,19 @@ print(df)
 '''
 code_plt_plot='''
 fig,ax=plt.subplots()
-ax.plot(df['x1'],df['x2'])
-ax.bar(df['x1'],df['x3'])
+ax.plot(df.iloc[:,0],df.iloc[:,1])
+ax.bar(df.iloc[:,0],df.iloc[:,2])
 fig.show()
 '''
 code_plt_bar='''
 fig,ax=plt.subplots()
-ax.bar(df['x1'],df['x2'])
-ax.bar(df['x1'],df['x3'])
+ax.bar(df.iloc[:,0],df.iloc[:,1])
+ax.bar(df.iloc[:,0],df.iloc[:,2])
 fig.show()
 '''
 code_plt_hist='''
 fig,ax=plt.subplots()
-ax.hist([df['x1'],df['x2'],df['x3']],bins=3)
+ax.hist([df.iloc[:,0],df.iloc[:,1],df.iloc[:,2]],bins=3)
 fig.show()
 '''
 
@@ -40,8 +40,8 @@ expander_side.write('お手持ちのPythonエディタを開いて頂き，以�
 st.sidebar.write('ライブラリ')
 st.sidebar.code(code_library,language='python')
 
-st.title('Analysis by Asaoka')
-st.write('ver. 2021.11.4 ')
+st.title('Analysis')
+st.write('ver. 2021.11.4         Asaoka')
 
 
 uploaded_file=st.file_uploader('↓ここにCSVデータをアップロード！')
@@ -91,20 +91,3 @@ elif option==graph_list[2]:
     st.sidebar.write('ヒストグラム')
     st.sidebar.code(code_plt_hist,language='python')    
 
-
-#st.write('option',option)
-
-#left_column,right_column=st.columns(2)
-#button1=left_column.button('left')
-#if button1:
-#    right_column.write('yes')
-
-#expander=st.expander('問い合わせ')
-#expander.write('come on!')
-
-
-#text=st.text_input('Your hobby')
-#condition=st.slider('Your condition',0,100,50)
-#'You love',text,'!'
-
-#'Your condition:',condition
