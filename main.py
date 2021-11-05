@@ -30,6 +30,7 @@ fig.show()
 code_plt_hist='''
 fig,ax=plt.subplots()
 ax.hist([df.iloc[:,0],df.iloc[:,1],df.iloc[:,2]],bins=3)
+ax.legend()
 fig.show()
 '''
 
@@ -87,7 +88,8 @@ elif option==graph_list[1]:
 elif option==graph_list[2]:
     fig,ax=plt.subplots()
     ax.hist(df,bins=3)
+    ax.legend()
     st.pyplot(fig)
     st.sidebar.write('ヒストグラム')
     st.sidebar.code(code_plt_hist,language='python')    
-
+    
