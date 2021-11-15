@@ -74,7 +74,8 @@ st.dataframe(df)
     
 graph_list=['折れ線グラフ(Streamlit)',
             '棒グラフ(Streamlit)',
-            'ヒストグラム(pyplot)']
+            'ヒストグラム(pyplot)',
+            '円グラフ(pyplot)']
 option=st.selectbox('グラフの種類',graph_list)
 
 if option == graph_list[0]:
@@ -92,4 +93,7 @@ elif option==graph_list[2]:
     st.pyplot(fig)
     st.sidebar.write('ヒストグラム')
     st.sidebar.code(code_plt_hist,language='python')    
-
+elif option==graph_list[3]:
+    fig,ax=plt.subplots()
+    ax.pie(x, labels=label, counterclock=False, startangle=90, autopct="%.1f%%",
+        pctdistance=0.7)
