@@ -95,6 +95,6 @@ elif option==graph_list[2]:
     st.sidebar.code(code_plt_hist,language='python')    
 elif option==graph_list[3]:
     fig,ax=plt.subplots()
-    ax.pie(df.iloc[0,:], counterclock=False, startangle=90, autopct="%.1f%%",
+    ax.pie(df.iloc[0,:],labels=df.columns, counterclock=False, startangle=90, autopct="%.1f%%",
         pctdistance=0.7)
     st.pyplot(fig)
