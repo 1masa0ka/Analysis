@@ -96,5 +96,5 @@ elif option==graph_list[2]:
 elif option==graph_list[3]:
     fig,ax=plt.subplots()
     ax.pie(df.iloc[0,:],labels=df.columns, counterclock=False, startangle=90, autopct="%.1f%%",
-        pctdistance=0.7,fontname="Meiryo")
+        pctdistance=0.7)
     st.pyplot(fig)
